@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const WorkoutSchema = new Schema({
     day: {
-        type: Date;
+        type: Date,
         default: Date.now
     },
     exercises: [
