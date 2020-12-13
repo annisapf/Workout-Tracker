@@ -6,10 +6,13 @@ let db = require("../models");
 
 const PWD = process.env.DB_PWD;
 const databaseUrl = `mongodb+srv://annisa:${encodeURIComponent(PWD)}@cluster0.l77tg.mongodb.net/workout`;
+// const databaseUrl = `mongodb://127.0.0.1:27017/workout`;
 
 mongoose.connect(databaseUrl, {
   useNewUrlParser: true,
-  useFindAndModify: true
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 let workoutSeed = [

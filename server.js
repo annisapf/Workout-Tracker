@@ -13,8 +13,16 @@ app.use(express.static("public"));
 
 const PWD = process.env.DB_PWD;
 const databaseUrl = `mongodb+srv://annisa:${encodeURIComponent(PWD)}@cluster0.l77tg.mongodb.net/workout`;
-mongoose.connect(process.env.MONGODB_URI || databaseUrl, { useNewUrlParser: true, useFindAndModify: false });
+// const databaseUrl = `mongodb://127.0.0.1:27017/workout`;
+mongoose.connect(process.env.MONGODB_URI || databaseUrl,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    });
 
+app.use(require("./routes/apiRoutes.js"));
 app.use(require("./routes/htmlRoutes.js"));
 
 app.listen(PORT, () => {

@@ -21,8 +21,16 @@ async function initExercise() {
   let workout;
 
   if (location.search.split("=")[1] === undefined) {
-    workout = await API.createWorkout()
-    console.log(workout)
+    workout = await API.createWorkout({
+      // type: "Cardio",
+      // name: "Running",
+      // distance: 5,
+      // duration: 10,
+      // weight: 1,
+      // reps: 2,
+      // sets: 3
+    })
+
   }
   if (workout) {
     location.search = "?id=" + workout._id;
